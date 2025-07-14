@@ -62,6 +62,40 @@ public class ConsumerController {
     }
 
     /**
+     * 发送消息接口 - 调用Provider并发送MQ消息
+     */
+    @GetMapping("/send-message")
+    public Map<String, Object> sendMessage(@RequestHeader(value = "gray", required = false) String gray) {
+        try {
+            // 设置灰度上下文
+            GrayContext.setGrayVersion(gray);
+            
+            log.info("Consumer发送消息接口，灰度标识: {}, 当前版本: {}", gray, grayVersion);
+            
+            Map<String, Object> result = new HashMap<>();
+            result.put("service", "consumer");
+            result.put("action", "send-message");
+            result.put("version", grayVersion);
+            result.put("port", port);
+            result.put("gray", gray);
+            result.put("timestamp", System.currentTimeMillis());
+            
+            // 1. 调用Provider的hello接口
+            Map<String, Object> providerResult = consumerService.callProviderHello(gray);
+            result.put("providerResult", providerResult);
+            
+            // 2. 发送RocketMQ消息
+            consumerService.sendGrayMessage(gray);
+            result.put("messageStatus", "sent");
+            
+            return result;
+        } finally {
+            // 清理灰度上下文
+            GrayContext.clear();
+        }
+    }
+
+    /**
      * 健康检查接口
      */
     @GetMapping("/health")

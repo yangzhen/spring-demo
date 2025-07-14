@@ -20,4 +20,10 @@ public interface ProviderFeignClient {
      */
     @GetMapping("/api/data")
     Map<String, Object> getData(@RequestHeader(value = "gray", required = false) String gray);
+
+    /**
+     * 调用Provider Hello接口
+     */
+    @GetMapping("/api/hello")
+    Map<String, Object> hello(@RequestHeader(value = "gray", required = false) String gray);
 }

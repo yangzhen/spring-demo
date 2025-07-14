@@ -1,6 +1,12 @@
 server:
   port: ${SERVER_PORT:8082}
 
+# RocketMQ 配置
+rocketmq:
+  name-server: localhost:9876
+  consumer:
+    group: provider-consumer-${spring.cloud.nacos.discovery.metadata.gray-version:normal}
+
 management:
   endpoints:
     web:

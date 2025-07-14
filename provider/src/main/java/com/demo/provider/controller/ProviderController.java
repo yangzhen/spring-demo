@@ -53,6 +53,25 @@ public class ProviderController {
     }
 
     /**
+     * Hello接口
+     */
+    @GetMapping("/hello")
+    public Map<String, Object> hello(@RequestHeader(value = "gray", required = false) String gray) {
+        log.info("Provider Hello接口，灰度标识: {}, 当前版本: {}", gray, grayVersion);
+        
+        Map<String, Object> result = new HashMap<>();
+        result.put("service", "provider");
+        result.put("action", "hello");
+        result.put("version", grayVersion);
+        result.put("port", port);
+        result.put("gray", gray);
+        result.put("message", "Hello from Provider " + grayVersion);
+        result.put("timestamp", System.currentTimeMillis());
+        
+        return result;
+    }
+
+    /**
      * 健康检查接口
      */
     @GetMapping("/health")
