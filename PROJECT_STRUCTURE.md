@@ -9,6 +9,7 @@ spring-cloud-gray-demo/
 ├── PROJECT_STRUCTURE.md                       # 项目结构说明文档
 ├── GRAY_ROUTING_IMPLEMENTATION.md             # 灰度路由实现技术文档
 ├── GRAY_RELEASE_GUIDE.md                      # 灰度发布实践指导手册
+├── GRAY_ROUTING_ARCHITECTURE.md               # 灰度路由架构设计图文档
 ├── ROCKETMQ_GRAY_ROUTING.md                   # RocketMQ灰度路由专项说明
 ├── REQUIREMENTS_BEST_PRACTICES.md             # 需求分析和最佳实践
 ├── .gitignore                                 # Git忽略文件配置
@@ -217,6 +218,17 @@ spring-cloud-gray-demo/
   - Tag机制的技术细节
   - 问题排查和解决方案
   - 性能优化建议
+
+#### GRAY_ROUTING_ARCHITECTURE.md
+- **作用**: 灰度路由架构设计图文档
+- **内容**: 
+  - 整体架构概览图
+  - HTTP请求灰度路由泳道图
+  - RocketMQ消息灰度路由泳道图
+  - 灰度标识传递流程图
+  - 版本隔离架构图
+  - 灰度路由决策流程图
+  - 技术实现关键点说明
 
 #### GRAY_ROUTING_IMPLEMENTATION.md
 - **作用**: 灰度路由实现技术文档

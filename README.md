@@ -13,6 +13,8 @@
 ### 🏗️ 系统架构
 本项目包含 Gateway、Consumer、Provider 三个核心模块，每个模块都支持多版本并行部署。
 
+详细的架构图和泳道图请参考：[灰度路由架构设计文档](GRAY_ROUTING_ARCHITECTURE.md)
+
 ## 技术栈
 
 - Java 8
